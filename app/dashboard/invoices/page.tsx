@@ -1,23 +1,4 @@
-import { useEffect, useState } from 'react';
-
 export default function Page() {
-  const [valorSensor, setValorSensor] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.github.com/repos/Alejo2023Udec/nextjs-dashboard/contents/app/dashboard/data.json'); // Cambia esta URL
-        const data = await response.json();
-        // Asumiendo que el valor del sensor está dentro de un objeto
-        setValorSensor(data.valor);
-      } catch (error) {
-        console.error('Error al cargar los datos:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div>
       <h1 className="text-center text-2xl font-bold mb-4">Datos del Sensor</h1>
@@ -34,8 +15,9 @@ export default function Page() {
             <tr className="border-b border-blue-200 hover:bg-blue-100">
               <td className="py-3 px-6">1</td>
               <td className="py-3 px-6">Sensor MQ</td>
-              <td className="py-3 px-6">{valorSensor !== null ? `${valorSensor} ppm` : 'Cargando...'}</td>
+              <td className="py-3 px-6">450 ppm</td>
             </tr>
+            {/* Agrega más filas según sea necesario */}
           </tbody>
         </table>
       </div>
